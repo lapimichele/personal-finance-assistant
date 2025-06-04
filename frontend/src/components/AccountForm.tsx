@@ -82,26 +82,26 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
     if (loading && accountId) {
         return (
             <div className="flex justify-center items-center min-h-screen">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 dark:border-blue-300"></div>
             </div>
         );
     }
 
     return (
-        <div className="max-w-2xl mx-auto p-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-6">
+        <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 {accountId ? 'Edit Account' : 'Create New Account'}
             </h1>
 
             {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 dark:bg-red-900 dark:text-red-300 dark:border-red-700">
                     {error}
                 </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Account Name
                     </label>
                     <input
@@ -111,12 +111,12 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-600 dark:focus:ring-blue-600"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="type" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Account Type
                     </label>
                     <select
@@ -125,7 +125,7 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                         value={formData.type}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-600 dark:focus:ring-blue-600"
                     >
                         {Object.values(AccountType).map((type) => (
                             <option key={type} value={type}>
@@ -136,7 +136,7 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                 </div>
 
                 <div>
-                    <label htmlFor="currency" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="currency" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Currency
                     </label>
                     <select
@@ -145,7 +145,7 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                         value={formData.currency}
                         onChange={handleChange}
                         required
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-600 dark:focus:ring-blue-600"
                     >
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
@@ -155,7 +155,7 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                 </div>
 
                 <div>
-                    <label htmlFor="balance" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="balance" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Initial Balance
                     </label>
                     <input
@@ -167,12 +167,12 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                         required
                         min="0"
                         step="0.01"
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-600 dark:focus:ring-blue-600"
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Description (Optional)
                     </label>
                     <textarea
@@ -181,7 +181,7 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                         value={formData.description}
                         onChange={handleChange}
                         rows={3}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:border-blue-600 dark:focus:ring-blue-600"
                     />
                 </div>
 
@@ -189,14 +189,14 @@ export default function AccountForm({ onSuccess }: AccountFormProps) {
                     <button
                         type="button"
                         onClick={() => navigate('/accounts')}
-                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                        className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800 dark:focus:ring-blue-600"
                     >
                         Cancel
                     </button>
                     <button
                         type="submit"
                         disabled={loading}
-                        className="px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                        className="px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800"
                     >
                         {loading ? 'Saving...' : accountId ? 'Update Account' : 'Create Account'}
                     </button>

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -16,45 +17,47 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
                 <AuthProvider>
-                    <Routes>
-                        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route element={<Layout><Outlet /></Layout>}>
-                            <Route
-                                path="/dashboard"
-                                element={
-                                    <ProtectedRoute>
-                                        <Dashboard />
-                                    </ProtectedRoute>
-                                }
-                            />
-                            <Route
-                                path="/accounts"
-                                element={
-                                    <ProtectedRoute>
-                                        <Accounts />
-                                    </ProtectedRoute>
-                                }
-                            />
-                            <Route
-                                path="/accounts/new"
-                                element={
-                                    <ProtectedRoute>
-                                        <AccountForm />
-                                    </ProtectedRoute>
-                                }
-                            />
-                            <Route
-                                path="/accounts/:id/edit"
-                                element={
-                                    <ProtectedRoute>
-                                        <AccountForm />
-                                    </ProtectedRoute>
-                                }
-                            />
-                        </Route>
-                    </Routes>
+                    <ThemeProvider>
+                        <Routes>
+                            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route element={<Layout><Outlet /></Layout>}>
+                                <Route
+                                    path="/dashboard"
+                                    element={
+                                        <ProtectedRoute>
+                                            <Dashboard />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/accounts"
+                                    element={
+                                        <ProtectedRoute>
+                                            <Accounts />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/accounts/new"
+                                    element={
+                                        <ProtectedRoute>
+                                            <AccountForm />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/accounts/:id/edit"
+                                    element={
+                                        <ProtectedRoute>
+                                            <AccountForm />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                            </Route>
+                        </Routes>
+                    </ThemeProvider>
                 </AuthProvider>
             </BrowserRouter>
         </QueryClientProvider>
