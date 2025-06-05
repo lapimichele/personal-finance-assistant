@@ -40,6 +40,12 @@ export default function Layout({ children }: LayoutProps) {
                   >
                     Accounts
                   </Link>
+                  <Link
+                    to="/transactions"
+                    className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 dark:text-gray-200"
+                  >
+                    Transactions
+                  </Link>
                 </>
               )}
             </div>

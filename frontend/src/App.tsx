@@ -8,6 +8,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Accounts from './pages/Accounts';
 import AccountForm from './components/AccountForm';
+import Transactions from './pages/Transactions';
+import TransactionForm from './components/TransactionForm';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -52,6 +54,31 @@ function App() {
                                     element={
                                         <ProtectedRoute>
                                             <AccountForm />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                {/* Transaction Routes */}
+                                <Route
+                                    path="/transactions"
+                                    element={
+                                        <ProtectedRoute>
+                                            <Transactions />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/transactions/new"
+                                    element={
+                                        <ProtectedRoute>
+                                            <TransactionForm />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/transactions/:id/edit"
+                                    element={
+                                        <ProtectedRoute>
+                                            <TransactionForm />
                                         </ProtectedRoute>
                                     }
                                 />
